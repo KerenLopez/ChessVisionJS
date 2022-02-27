@@ -28,156 +28,156 @@
             );
         }
 
-class Board extends React.Component {
-  constructor(props){
-    super(props);
-    this.state={
-      squares: Array(64).fill(null),
-      xIsNext: true,
-    };
-  }
-  
-  /*handleClick(i) {
-    const squares = this.state.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    squares[i] = this.state.xIsNext ? 'X': 'O';
-    this.setState(
-      {squares: squares,
-       xIsNext: !this.state.xIsNext,
-      });
-  }*/
-  
-  renderSquare(i,c, id) {
-    return (<Square ID={id} color={c} value={this.state.squares[i]}
-             onClick={()=> this.handleClick(i)}
-             />
-           );
-  }
+        class Board extends React.Component {
+            constructor(props){
+                super(props);
+                this.state={
+                squares: Array(64).fill(null),
+                xIsNext: true,
+                };
+            }
+            
+            /*handleClick(i) {
+                const squares = this.state.squares.slice();
+                if (calculateWinner(squares) || squares[i]) {
+                return;
+                }
+                squares[i] = this.state.xIsNext ? 'X': 'O';
+                this.setState(
+                {squares: squares,
+                xIsNext: !this.state.xIsNext,
+                });
+            }*/
+            
+            renderSquare(i,c, id) {
+                return (<Square ID={id} color={c} value={this.state.squares[i]}
+                    onClick={()=> this.handleClick(i)}
+                    />
+                );
+            }
 
-  render() {
-     /*const winner = calculateWinner(this.state.squares);
-    let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    }*/
+            render() {
+                /*const winner = calculateWinner(this.state.squares);
+                let status;
+                if (winner) {
+                status = 'Winner: ' + winner;
+                } else {
+                status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+                }*/
 
-    return (
-      <div>
-        <div className="status">{status}</div>
-            <div>
-                {this.renderSquare(0, "w", "8a")}  
-                {this.renderSquare(1, "g", "8b")} 
-                {this.renderSquare(2, "w", "8c")}    
-                {this.renderSquare(3,"g", "8d")}
-                {this.renderSquare(4, "w", "8e")}
-                {this.renderSquare(5, "g", "8f")}
-                {this.renderSquare(6, "w", "8g")}
-                {this.renderSquare(7,"g", "8h")}  
-            </div>
-            <div>
-                {this.renderSquare(8, "g", "7a")}
-                {this.renderSquare(9, "w", "7b")}
-                {this.renderSquare(10, "g", "7c")}
-                {this.renderSquare(11,"w", "7d")}
-                {this.renderSquare(12, "g", "7e")}
-                {this.renderSquare(13, "w", "7f")}
-                {this.renderSquare(14, "g", "7g")}
-                {this.renderSquare(15,"w", "7h")} 
-            </div>
-            <div>
-                {this.renderSquare(16, "w", "6a")}
-                {this.renderSquare(17, "g", "6b")}
-                {this.renderSquare(18, "w", "6c")}
-                {this.renderSquare(19,"g", "6d")}
-                {this.renderSquare(20, "w", "6e")}
-                {this.renderSquare(21, "g", "6f")}
-                {this.renderSquare(22, "w", "6g")}
-                {this.renderSquare(23,"g", "6h")}
-            </div>
-            <div>
-                {this.renderSquare(24, "g", "5a")}
-                {this.renderSquare(25, "w", "5b")}
-                {this.renderSquare(26, "g", "5c")}
-                {this.renderSquare(27,"w", "5d")}
-                {this.renderSquare(28, "g", "5e")}
-                {this.renderSquare(29, "w", "5f")}
-                {this.renderSquare(30, "g", "5g")}
-                {this.renderSquare(31,"w", "5h")}
-            </div>
-            <div>
-                {this.renderSquare(32)}
-                {this.renderSquare(33)}
-                {this.renderSquare(34)}
-                {this.renderSquare(35)}
-                {this.renderSquare(36)}
-                {this.renderSquare(37)}
-                {this.renderSquare(38)}
-                {this.renderSquare(39)}
-            </div>
-            <div>
-                {this.renderSquare(40)}
-                {this.renderSquare(41)}
-                {this.renderSquare(42)}
-                {this.renderSquare(43)}
-                {this.renderSquare(44)}
-                {this.renderSquare(45)}
-                {this.renderSquare(46)}
-                {this.renderSquare(47)}
-            </div>
-            <div>
-                {this.renderSquare(48)}
-                {this.renderSquare(49)}
-                {this.renderSquare(50)}
-                {this.renderSquare(51)}
-                {this.renderSquare(52)}
-                {this.renderSquare(53)}
-                {this.renderSquare(54)}
-                {this.renderSquare(55)}
-            </div>
-            <div>
-                {this.renderSquare(56)}
-                {this.renderSquare(57)}
-                {this.renderSquare(58)}
-                {this.renderSquare(59)}
-                {this.renderSquare(60)}
-                {this.renderSquare(61)}
-                {this.renderSquare(62)}
-                {this.renderSquare(63)}
-            </div>
-      </div>
-    );
-  }
-}
+                return (
+                <div>
+                    <div className="status">{status}</div>
+                        <div>
+                            {this.renderSquare(0, "w", "8a")}  
+                            {this.renderSquare(1, "g", "8b")} 
+                            {this.renderSquare(2, "w", "8c")}    
+                            {this.renderSquare(3,"g", "8d")}
+                            {this.renderSquare(4, "w", "8e")}
+                            {this.renderSquare(5, "g", "8f")}
+                            {this.renderSquare(6, "w", "8g")}
+                            {this.renderSquare(7,"g", "8h")}  
+                        </div>
+                        <div>
+                            {this.renderSquare(8, "g", "7a")}
+                            {this.renderSquare(9, "w", "7b")}
+                            {this.renderSquare(10, "g", "7c")}
+                            {this.renderSquare(11,"w", "7d")}
+                            {this.renderSquare(12, "g", "7e")}
+                            {this.renderSquare(13, "w", "7f")}
+                            {this.renderSquare(14, "g", "7g")}
+                            {this.renderSquare(15,"w", "7h")} 
+                        </div>
+                        <div>
+                            {this.renderSquare(16, "w", "6a")}
+                            {this.renderSquare(17, "g", "6b")}
+                            {this.renderSquare(18, "w", "6c")}
+                            {this.renderSquare(19,"g", "6d")}
+                            {this.renderSquare(20, "w", "6e")}
+                            {this.renderSquare(21, "g", "6f")}
+                            {this.renderSquare(22, "w", "6g")}
+                            {this.renderSquare(23,"g", "6h")}
+                        </div>
+                        <div>
+                            {this.renderSquare(24, "g", "5a")}
+                            {this.renderSquare(25, "w", "5b")}
+                            {this.renderSquare(26, "g", "5c")}
+                            {this.renderSquare(27,"w", "5d")}
+                            {this.renderSquare(28, "g", "5e")}
+                            {this.renderSquare(29, "w", "5f")}
+                            {this.renderSquare(30, "g", "5g")}
+                            {this.renderSquare(31,"w", "5h")}
+                        </div>
+                        <div>
+                            {this.renderSquare(32, "w", "4a")}
+                            {this.renderSquare(33, "g", "4b")}
+                            {this.renderSquare(34, "w", "4c")}
+                            {this.renderSquare(35,"g", "4d")}
+                            {this.renderSquare(36, "w", "4e")}
+                            {this.renderSquare(37, "g", "4f")}
+                            {this.renderSquare(38, "w", "4g")}
+                            {this.renderSquare(39,"g", "4h")}
+                        </div>
+                        <div>
+                            {this.renderSquare(40, "g", "3a")}
+                            {this.renderSquare(41, "w", "3b")}
+                            {this.renderSquare(42, "g", "3c")}
+                            {this.renderSquare(43,"w", "3d")}
+                            {this.renderSquare(44, "g", "3e")}
+                            {this.renderSquare(45, "w", "3f")}
+                            {this.renderSquare(46, "g", "3g")}
+                            {this.renderSquare(47,"w", "3h")}
+                        </div>
+                        <div>
+                            {this.renderSquare(48, "w", "2a")}
+                            {this.renderSquare(49, "g", "2b")}
+                            {this.renderSquare(50, "w", "2c")}
+                            {this.renderSquare(51,"g", "2d")}
+                            {this.renderSquare(52, "w", "2e")}
+                            {this.renderSquare(53, "g", "2f")}
+                            {this.renderSquare(54, "w", "2g")}
+                            {this.renderSquare(55,"g", "2h")}
+                        </div>
+                        <div>
+                            {this.renderSquare(56, "g", "1a")}
+                            {this.renderSquare(57, "w", "1b")}
+                            {this.renderSquare(58, "g", "1c")}
+                            {this.renderSquare(59,"w", "1d")}
+                            {this.renderSquare(60, "g", "1e")}
+                            {this.renderSquare(61, "w", "1f")}
+                            {this.renderSquare(62, "g", "1g")}
+                            {this.renderSquare(63,"w", "1h")}
+                        </div>
+                </div>
+                );
+            }
+        }
 
-class Game extends React.Component {
-  render() {
-    return (
-      <div className="game">
-        <div className="game-board">
-          <Board />
-        </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
-        </div>
-        <button>
-            Start game!!
-        </button>
-      </div>
-    );
-  }
-}
+        class Game extends React.Component {
+            render() {
+                return (
+                <div className="game">
+                    <div className="game-board">
+                    <Board />
+                    </div>
+                    <div className="game-info">
+                    <div>{/* status */}</div>
+                    <ol>{/* TODO */}</ol>
+                    </div>
+                    <button className="button">
+                        Start game!!
+                    </button>
+                </div>
+                );
+            }
+        }
 
-// ========================================
+        // ========================================
 
-ReactDOM.render(
-  <Game />,
-  document.getElementById('root')
-);  
+        ReactDOM.render(
+        <Game />,
+        document.getElementById('root')
+        );  
 
     </script>
     <!--

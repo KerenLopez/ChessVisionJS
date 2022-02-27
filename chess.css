@@ -17,13 +17,13 @@ ol, ul {
     float: left;
     font-size: 24px;
     font-weight: bold;
-    line-height: 34px;
-    height: 34px;
+    line-height: 70px;
+    height: 70px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 70px;
 }
 
 .square {
@@ -32,13 +32,13 @@ ol, ul {
     float: left;
     font-size: 24px;
     font-weight: bold;
-    line-height: 34px;
-    height: 34px;
+    line-height: 70px;
+    height: 70px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 70px;
 }
   
 .game {
@@ -48,4 +48,15 @@ ol, ul {
   
 .game-info {
     margin-left: 20px;
+}
+
+.button{
+    align-items:center;
+    display:inline-flex;
+    flex-direction:column;
+    height: 50px;
+    width: 500px;
+    background-color: #85AA53;
+    font: 30px "Century Gothic", Futura, sans-serif;
+    margin-top: 500px;
 }
