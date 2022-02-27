@@ -60,3 +60,8 @@ ol, ul {
     font: 30px "Century Gothic", Futura, sans-serif;
     margin-top: 500px;
 }
+
+#timer{
+    margin-top: 10px;
+    font: 40px "Century Gothic", Futura, sans-serif;
+}

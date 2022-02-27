@@ -153,6 +153,41 @@
             }
         }
 
+        class Timer extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { seconds: 60 , minutes: 1};
+            }
+
+            tick() {
+                this.setTime();
+                this.setState(state => ({
+                seconds: state.seconds - 1
+                }));
+            }
+
+            setTime() {
+                if(this.state.seconds==1){
+                    this.state.minutes= 0;
+                }
+            }
+
+            componentWillUnmount() {
+                clearInterval(this.interval);
+            }
+
+            componentDidMount() {
+                this.interval = setInterval(() => this.tick(), 1000);
+            }
+
+            render() {
+                return (
+                    <div>{(this.state.seconds==60 ? (this.state.minutes+':00') : (this.state.minutes+':'+this.state.seconds)) && (this.state.seconds<10 ? (this.state.minutes+':0'+this.state.seconds) : (this.state.minutes+':'+this.state.seconds))}</div>
+
+                );
+            }
+        }
+
         class Game extends React.Component {
             render() {
                 return (
@@ -163,6 +198,9 @@
                     <div className="game-info">
                     <div>{/* status */}</div>
                     <ol>{/* TODO */}</ol>
+                    </div>
+                    <div className="game-board" id="timer">
+                    <Timer />
                     </div>
                     <button className="button">
                         Start game!!
