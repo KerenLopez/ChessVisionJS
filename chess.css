@@ -50,7 +50,7 @@ ol, ul {
     margin-left: 20px;
 }
 
-.button{
+#button{
     align-items:center;
     display:inline-flex;
     flex-direction:column;
@@ -58,7 +58,7 @@ ol, ul {
     width: 500px;
     background-color: #85AA53;
     font: 30px "Century Gothic", Futura, sans-serif;
-    margin-top: 500px;
+    margin-top: 470px;
 }
 
 #timer{

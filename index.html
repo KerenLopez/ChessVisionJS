@@ -190,14 +190,22 @@
                 clearInterval(this.interval);
             }
 
-            componentDidMount() {
+            startTime() {
                 this.interval = setInterval(() => this.tick(), 1000);
             }
 
             render() {
                 return (
-                    <div>{(this.state.seconds==0 ? (this.state.minutes+':00') : (this.state.minutes+':'+this.state.seconds)) && (this.state.seconds<10 ? (this.state.minutes+':0'+this.state.seconds) : (this.state.minutes+':'+this.state.seconds))}</div>
-
+                    <div>
+                        <div>
+                            {(this.state.seconds==0 ? (this.state.minutes+':00') : (this.state.minutes+':'+this.state.seconds)) && (this.state.seconds<10 ? (this.state.minutes+':0'+this.state.seconds) : (this.state.minutes+':'+this.state.seconds))}
+                       </div>
+                        <div><button className="game-board" id= "button" onClick={() =>this.startTime()}>
+                            Start game!!
+                            </button>
+                        </div>
+                    </div>
+                    
                 );
             }
         }
@@ -216,9 +224,7 @@
                     <div className="game-board" id="timer">
                     <Timer />
                     </div>
-                    <button className="button">
-                        Start game!!
-                    </button>
+                    
                 </div>
                 );
             }
