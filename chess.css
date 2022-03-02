@@ -1,6 +1,7 @@
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
+    min-width: 1300px;
 }
   
 ol, ul {
@@ -12,7 +13,7 @@ ol, ul {
 }
 
 .green-square {
-    background-color: #91AB78;
+    background-color: #63c556;
     border: 1px solid #999;
     float: left;
     font-size: 0px;
@@ -56,14 +57,19 @@ ol, ul {
     flex-direction:column;
     height: 50px;
     width: 500px;
-    background-color: #85AA53;
+    background-color: #63f051;
     font: 30px "Century Gothic", Futura, sans-serif;
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: solid 3px #3e8634;
+    font-weight: bold;
+    border-radius: 10px;
 }
 
-#timer{
-    margin-top: 10px;
+.timer{
+    margin-left: 200px;
     font: 40px "Century Gothic", Futura, sans-serif;
+    margin-bottom: 20px;
 }
 
 img{
@@ -72,9 +78,16 @@ img{
 
 .randomStyle{
     color:rgb(41, 214, 93);
-   font-weight: bold;
+    font-weight: bold;
 }
 
 ul li{
     font-size: 30px;
+}
+
+.score{
+    margin-left: 130px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
