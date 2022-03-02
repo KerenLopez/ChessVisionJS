@@ -18,6 +18,8 @@
         var items=[];
         var randomSquare="";
         var timer="";
+        var score=0;
+        var end=false;
 
         function Square(props) {
             var choice="";
@@ -68,7 +70,9 @@
                 }
                 items= items.concat(newItem);
                 timer="0:00 ";
-                
+                if(newItem.correct){
+                    score++;
+                }
                 /*
                 this.setState(state => ({
                 items: state.items.concat(newItem),
@@ -216,6 +220,7 @@
                 }
                 if(this.state.seconds==0 && this.state.minutes==0){
                     this.componentWillUnmount();
+                    end=true;
                 }
             }
 
@@ -279,16 +284,14 @@
                             
                             </button>
                         </div>
-                        <div>
+                        <div className="timer">
                             {(this.state.seconds==0 ? (this.state.minutes+':00') : (this.state.minutes+':'+this.state.seconds)) && (this.state.seconds<10 ? (this.state.minutes+':0'+this.state.seconds) : (this.state.minutes+':'+this.state.seconds))}
-                            
-                       </div>
+                            </div>
+                       <div className="score">{end? "Your score is: "+score :""}</div>
                        <div>
                            <div className="randomStyle"> { randomSquare}</div>
                             <SquaresList items={items} />
-                        </div>
-                        
-                       
+                        </div>    
                     </div>
                     
                 );
@@ -348,11 +351,6 @@
             }
         }
 
-        
-        
-
-
-
        
         class SquaresList extends React.Component {
             render() {
@@ -374,14 +372,9 @@
                     <div className="game-board">
                     <Board />
                     </div>
-                    <div className="game-info">
-                    <div>{/* status */}</div>
-                    <ol>{/* TODO */}</ol>
-                    </div>
-                    <div className="game-board" id="timer">
+                    <div className="timer">
                     <Timer />
                     </div>
-                    
                 </div>
                 );
             }
