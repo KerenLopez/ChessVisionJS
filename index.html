@@ -13,7 +13,8 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-        var btClicked=false;
+        var btClicked=0;
+        var squares=Array(64).fill(null);
         function Square(props) {
             var choice="";
             if(props.color=="g"){
@@ -32,7 +33,7 @@
             constructor(props){
                 super(props);
                 this.state={
-                squares: Array(64).fill(null),
+               // squares: Array(64).fill(null),
                 xIsNext: true,
                 };
             }
@@ -50,8 +51,8 @@
             }*/
             
             renderSquare(i,c, id) {
-                this.state.squares[i]=id;
-                return (<Square ID={id} color={c} value={this.state.squares[i]}
+               /* this.state.*/squares[i]=id;
+                return (<Square ID={id} color={c} value={/*this.state.*/squares[i]}
                     onClick={()=> this.handleClick(i)}
                     />
                 );
@@ -150,9 +151,7 @@
                             {this.renderSquare(62, "g", "1g")}
                             {this.renderSquare(63,"w", "1h")}
                         </div>
-                        <div>
-                            {this.state.squares[(Math.floor(Math.random() * 64))] }
-                        </div>
+                       
                 </div>
                 );
             }
@@ -161,7 +160,8 @@
         class Timer extends React.Component {
             constructor(props) {
                 super(props);
-                this.state = { seconds: 0 , minutes: 1};
+                this.state = { seconds: 0 , minutes: 1, randomSquare:""};
+                
             }
 
             tick() {
@@ -196,18 +196,29 @@
             }
 
             startTime() {
+                
                 this.interval = setInterval(() => this.tick(), 1000);
-                btClicked=true;
+                this.getRandomNumSquare();
             }
 
+            getRandomNumSquare(){
+
+             this.state.randomSquare= /*this.state.*/squares[(Math.floor(Math.random() * 64))];
+                   
+            }
+            
             render() {
                 return (
                     <div>
                         <div>
                             {(this.state.seconds==0 ? (this.state.minutes+':00') : (this.state.minutes+':'+this.state.seconds)) && (this.state.seconds<10 ? (this.state.minutes+':0'+this.state.seconds) : (this.state.minutes+':'+this.state.seconds))}
                        </div>
+                       <div>
+                            { this.state.randomSquare}
+                        </div>
                         <div><button className="game-board" id= "button" onClick={() =>this.startTime()}>
                             Start game!!
+                            
                             </button>
                         </div>
                        
