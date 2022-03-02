@@ -66,3 +66,15 @@ ol, ul {
     font: 40px "Century Gothic", Futura, sans-serif;
 }
 
+img{
+    width:25px;
+}
+
+.randomStyle{
+    color:rgb(41, 214, 93);
+   font-weight: bold;
+}
+
+ul li{
+    font-size: 30px;
+}

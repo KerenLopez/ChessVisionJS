@@ -63,10 +63,11 @@
                 const newItem = {
                     value:randomSquare,
                     time: timer,
-                     id: Date.now()
+                     id: Date.now(),
+                     correct: (squares[i]==randomSquare? true: false)
                 }
                 items= items.concat(newItem);
-                timer="z";
+                timer="0:00 ";
                 
                 /*
                 this.setState(state => ({
@@ -247,7 +248,7 @@
                     this.state2.seconds=0;
                     this.state2.minutes= this.state2.minutes +1;
                 }
-                if(timer=="z"){
+                if(timer=="0:00 "){
                     this.resetTimer();
                 }
                 
@@ -283,7 +284,7 @@
                             
                        </div>
                        <div>
-                            { randomSquare}
+                           <div className="randomStyle"> { randomSquare}</div>
                             <SquaresList items={items} />
                         </div>
                         
@@ -358,7 +359,7 @@
                 return (
                 <ul>
                     {this.props.items.map(item => (
-                    <li key={item.id}>{item.value + " "+item.time} </li>
+                    <li key={item.id}>{item.value + " "+item.time} <img src={item.correct? "images/correct.png":"images/wrong.png"} /> </li>
                     ))}
                 </ul>
                 );
