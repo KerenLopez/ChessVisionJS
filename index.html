@@ -15,6 +15,9 @@
     <script type="text/babel">
         var btClicked=0;
         var squares=Array(64).fill(null);
+        var items=[];
+        var randomSquare="";
+
         function Square(props) {
             var choice="";
             if(props.color=="g"){
@@ -29,6 +32,12 @@
             );
         }
 
+        function getRandomNumSquare(){
+
+        randomSquare= /*this.state.*/squares[(Math.floor(Math.random() * 64))];
+            
+        }
+
         class Board extends React.Component {
             constructor(props){
                 super(props);
@@ -38,17 +47,34 @@
                 };
             }
             
-            /*handleClick(i) {
-                const squares = this.state.squares.slice();
+            handleClick(i) {
+               /* const squares = this.state.squares.slice();
                 if (calculateWinner(squares) || squares[i]) {
                 return;
                 }
+                
                 squares[i] = this.state.xIsNext ? 'X': 'O';
+                */
                 this.setState(
                 {squares: squares,
                 xIsNext: !this.state.xIsNext,
                 });
-            }*/
+                const newItem = {
+                    value:randomSquare,
+                    time: "",
+                    
+                     id: Date.now()
+                }
+                items= items.concat(newItem);
+                
+                /*
+                this.setState(state => ({
+                items: state.items.concat(newItem),
+                text: ''
+                }));
+                */
+                getRandomNumSquare();
+            }
             
             renderSquare(i,c, id) {
                /* this.state.*/squares[i]=id;
@@ -66,7 +92,7 @@
                 } else {
                 status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
                 }*/
-
+                
                 return (
                     
                 <div>
@@ -160,7 +186,7 @@
         class Timer extends React.Component {
             constructor(props) {
                 super(props);
-                this.state = { seconds: 0 , minutes: 1, randomSquare:""};
+                this.state = { seconds: 0 , minutes: 1};
                 
             }
 
@@ -174,6 +200,7 @@
                 minutes: state.minutes
                 }));
             }
+
 
             setTime() {
                 /*if(this.state.seconds==1){
@@ -195,38 +222,109 @@
                 clearInterval(this.interval);
             }
 
+
             startTime() {
                 
                 this.interval = setInterval(() => this.tick(), 1000);
-                this.getRandomNumSquare();
+                getRandomNumSquare();
             }
 
-            getRandomNumSquare(){
-
-             this.state.randomSquare= /*this.state.*/squares[(Math.floor(Math.random() * 64))];
-                   
-            }
+            
             
             render() {
                 return (
                     <div>
-                        <div>
-                            {(this.state.seconds==0 ? (this.state.minutes+':00') : (this.state.minutes+':'+this.state.seconds)) && (this.state.seconds<10 ? (this.state.minutes+':0'+this.state.seconds) : (this.state.minutes+':'+this.state.seconds))}
-                       </div>
-                       <div>
-                            { this.state.randomSquare}
-                        </div>
                         <div><button className="game-board" id= "button" onClick={() =>this.startTime()}>
                             Start game!!
                             
                             </button>
                         </div>
+                        <div>
+                            {(this.state.seconds==0 ? (this.state.minutes+':00') : (this.state.minutes+':'+this.state.seconds)) && (this.state.seconds<10 ? (this.state.minutes+':0'+this.state.seconds) : (this.state.minutes+':'+this.state.seconds))}
+                       </div>
+                       <div>
+                            { randomSquare}
+                            <SquaresList items={items} />
+                        </div>
+                        
                        
                     </div>
                     
                 );
             }
         }
+
+
+        class Timer2 extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { seconds: 0 , minutes: 0};
+                
+            }
+
+           tick() {
+                    this.setState(state => ({
+                    seconds: state.seconds + 1
+                    }));
+                    this.setTime();
+                    this.setState(state => ({
+                    seconds: state.seconds,
+                    minutes: state.minutes
+                    }));
+            }
+
+            setTime() {
+                if(this.state.seconds>59){
+                    this.state.seconds=0;
+                    this.state.minutes= this.state.minutes +1;
+                }
+                
+            }
+
+           
+
+            componentWillUnmount() {
+                clearInterval(this.interval);
+            }
+
+
+            startTime() {
+                this.interval = setInterval(() => this.tick(), 1000);
+            }
+
+            resetTimer(){
+                this.state.seconds=0;
+                this.state.minutes=0;
+
+            }
+
+            render(){
+                return (
+                    <div>
+                    {(this.state.seconds==0 ? (this.state.minutes+':00') : (this.state.minutes+':'+this.state.seconds)) && (this.state.seconds<10 ? (this.state.minutes+':0'+this.state.seconds) : (this.state.minutes+':'+this.state.seconds))}
+                       </div>
+                );
+            }
+        }
+
+
+        
+
+
+
+       
+        class SquaresList extends React.Component {
+            render() {
+                return (
+                <ul>
+                    {this.props.items.map(item => (
+                    <li key={item.id}>{item.value + item.time} </li>
+                    ))}
+                </ul>
+                );
+            }
+        }
+
 
         class Game extends React.Component {
             render() {
